@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.jdbc.Customer;
+import com.example.demo.jdbc.CustomerJDBCRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	@Autowired
+	private CustomerJDBCRepository customerRepository;
+
 	@Override
 	public void run(String... strings) {
 		log.info("Creating tables");
@@ -44,6 +49,23 @@ public class DemoApplication implements CommandLineRunner {
 
 		// Uses JdbcTemplate's batchUpdate operation to bulk load data
 		jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
+
+		log.info("Inserting -> {}", customerRepository.insert(new Customer(10011L, "Ramesh", "Fadatare")));
+		log.info("Inserting -> {}", customerRepository.insert(new Customer(10012L, "Suresh", "Fadatare")));
+
+		log.info("Employee id 10011 -> {}", customerRepository.findById(10011L));
+		log.info("Employee id 10012L -> {}", customerRepository.findById(10012L));
+
+		log.info("Update 10011L -> {}", customerRepository.update(new Customer(10011L, "Ram", "Stark")));
+		log.info("Update 10012L -> {}", customerRepository.update(new Customer(10012L, "Shyam", "Stark")));
+
+		log.info("Employee id 10011 -> {}", customerRepository.findById(10011L));
+		log.info("Employee id 10012L -> {}", customerRepository.findById(10012L));
+
+		log.info("Delete Employee id 10011 -> {}", customerRepository.findById(10011L));
+		customerRepository.deleteById(10011L);
+
+		log.info("All customers -> {}", customerRepository.findAll());
 
 	}
 
