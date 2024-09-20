@@ -10,15 +10,15 @@ public class CustomerUtils {
 	private CustomerRepository customerRepository;
 
 	public void dbCreateOperations() {
-		customerRepository.createData();
+		customerRepository.testData();
 	}
 
 	public void dbCheckRestOperations() {
-		customerRepository.checkRestOperations();
+		customerRepository.testRestOperations();
 	}
 
 	public void dbCheckOperations() {
-		customerRepository.checkOperations();
+		customerRepository.testDbOperations();
 	}
 
 }

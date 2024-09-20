@@ -58,7 +58,7 @@ public class CustomerRepository {
                 employee.getFirstName(), employee.getLastName(), employee.getId());
     }
 
-    public void createData() {
+    public void testData() {
         log.info("Creating tables");
         jdbcTemplate.execute("DROP TABLE IF EXISTS customers");
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS customers(" +
@@ -76,7 +76,7 @@ public class CustomerRepository {
         jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
     }
 
-    public void checkRestOperations() {
+    public void testRestOperations() {
         log.info("Querying for customer records where first_name = 'Josh':");
         jdbcTemplate.query(
                         "SELECT id, first_name, last_name FROM customers WHERE first_name = ?",
@@ -84,7 +84,7 @@ public class CustomerRepository {
                 .forEach(customer -> log.info(customer.toString()));
     }
 
-    public void checkOperations() {
+    public void testDbOperations() {
         log.info("Inserting -> {}", insert(new Customer("Ramesh", "Fadatare")));
         log.info("Inserting -> {}", insert(new Customer("Suresh", "Fadatare")));
 
