@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.jdbc.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +45,6 @@ public class DemoApplication implements CommandLineRunner {
 		// Uses JdbcTemplate's batchUpdate operation to bulk load data
 		jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
 
-		log.info("Querying for customer records where first_name = 'Josh':");
-		jdbcTemplate.query(
-						"SELECT id, first_name, last_name FROM customers WHERE first_name = ?",
-						(rs, rowNum) -> new Customer(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name")), "Josh")
-				.forEach(customer -> log.info(customer.toString()));
 	}
 
 		@GetMapping("/hello")
