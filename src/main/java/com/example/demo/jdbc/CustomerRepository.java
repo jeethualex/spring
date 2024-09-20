@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class CustomerJDBCRepository {
+public class CustomerRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
