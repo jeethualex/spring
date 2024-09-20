@@ -22,16 +22,16 @@ public class CustomerUtils {
 		log.info("Inserting -> {}", customerRepository.insert(new Customer("Ramesh", "Fadatare")));
 		log.info("Inserting -> {}", customerRepository.insert(new Customer("Suresh", "Fadatare")));
 
-		log.info("Employee id 10011 -> {}", customerRepository.findById(5));
-		log.info("Employee id 10012L -> {}", customerRepository.findById(6));
+		log.info("Employee id 5 -> {}", customerRepository.findById(5));
+		log.info("Employee id 6 -> {}", customerRepository.findById(6));
 
 		log.info("Update 10011L -> {}", customerRepository.update(new Customer(5, "Ram", "Stark")));
 		log.info("Update 10012L -> {}", customerRepository.update(new Customer(6, "Shyam", "Stark")));
 
-		log.info("Employee id 10011 -> {}", customerRepository.findById(5));
-		log.info("Employee id 10012L -> {}", customerRepository.findById(6));
+		log.info("Employee id 5 -> {}", customerRepository.findById(5));
+		log.info("Employee id 6 -> {}", customerRepository.findById(6));
 
-		log.info("Delete Employee id 10011 -> {}", customerRepository.findById(5));
+		log.info("Delete Employee id 5 -> {}", customerRepository.findById(5));
 		customerRepository.deleteById(5);
 
 		log.info("All customers -> {}", customerRepository.findAll());
