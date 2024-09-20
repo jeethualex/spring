@@ -40,30 +40,22 @@ public class CustomerRepository {
     }
 
     public Optional < Customer > findById(long id) {
-        return Optional.of(jdbcTemplate.queryForObject("select * from customers where id=?", new Object[] {
-                        id
-                },
-                new BeanPropertyRowMapper < Customer > (Customer.class)));
+        return Optional.ofNullable(jdbcTemplate.queryForObject("select * from customers where id=?",
+                new BeanPropertyRowMapper < Customer > (Customer.class), id));
     }
 
     public int deleteById(long id) {
-        return jdbcTemplate.update("delete from customers where id=?", new Object[] {
-                id
-        });
+        return jdbcTemplate.update("delete from customers where id=?", id);
     }
 
     public int insert(Customer employee) {
         return jdbcTemplate.update("insert into customers (first_name, last_name) " + "values(?, ?)",
-                new Object[] {
-                        employee.getFirstName(), employee.getLastName()
-                });
+                employee.getFirstName(), employee.getLastName());
     }
 
     public int update(Customer employee) {
         return jdbcTemplate.update("update customers " + " set first_name = ?, last_name = ? " + " where id = ?",
-                new Object[] {
-                        employee.getFirstName(), employee.getLastName(), employee.getId()
-                });
+                employee.getFirstName(), employee.getLastName(), employee.getId());
     }
 
     public void createData() {
