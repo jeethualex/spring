@@ -91,8 +91,8 @@ public class CustomerRepository {
         log.info("Employee id 5 -> {}", findById(5));
         log.info("Employee id 6 -> {}", findById(6));
 
-        log.info("Update 10011L -> {}", update(new Customer(5, "Ram", "Stark")));
-        log.info("Update 10012L -> {}", update(new Customer(6, "Shyam", "Stark")));
+        log.info("Update 5 -> {}", update(new Customer(5, "Ram", "Stark")));
+        log.info("Update 6 -> {}", update(new Customer(6, "Shyam", "Stark")));
 
         log.info("Employee id 5 -> {}", findById(5));
         log.info("Employee id 6 -> {}", findById(6));
