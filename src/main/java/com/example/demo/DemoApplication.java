@@ -37,7 +37,7 @@ public class DemoApplication implements CommandLineRunner {
 		log.info("Creating tables");
 		jdbcTemplate.execute("DROP TABLE IF EXISTS customers");
 		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS customers(" +
-				"id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
+				"id INT NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), PRIMARY KEY (id))");
 
 		// Split up the array of whole names into an array of first/last names
 		List<Object[]> splitUpNames = Arrays.asList("John Woo", "Jeff Dean", "Josh Bloch", "Josh Long").stream()
@@ -50,20 +50,20 @@ public class DemoApplication implements CommandLineRunner {
 		// Uses JdbcTemplate's batchUpdate operation to bulk load data
 		jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
 
-		log.info("Inserting -> {}", customerRepository.insert(new Customer(10011L, "Ramesh", "Fadatare")));
-		log.info("Inserting -> {}", customerRepository.insert(new Customer(10012L, "Suresh", "Fadatare")));
+		log.info("Inserting -> {}", customerRepository.insert(new Customer("Ramesh", "Fadatare")));
+		log.info("Inserting -> {}", customerRepository.insert(new Customer("Suresh", "Fadatare")));
 
-		log.info("Employee id 10011 -> {}", customerRepository.findById(10011L));
-		log.info("Employee id 10012L -> {}", customerRepository.findById(10012L));
+		log.info("Employee id 10011 -> {}", customerRepository.findById(5));
+		log.info("Employee id 10012L -> {}", customerRepository.findById(6));
 
-		log.info("Update 10011L -> {}", customerRepository.update(new Customer(10011L, "Ram", "Stark")));
-		log.info("Update 10012L -> {}", customerRepository.update(new Customer(10012L, "Shyam", "Stark")));
+		log.info("Update 10011L -> {}", customerRepository.update(new Customer(5, "Ram", "Stark")));
+		log.info("Update 10012L -> {}", customerRepository.update(new Customer(6, "Shyam", "Stark")));
 
-		log.info("Employee id 10011 -> {}", customerRepository.findById(10011L));
-		log.info("Employee id 10012L -> {}", customerRepository.findById(10012L));
+		log.info("Employee id 10011 -> {}", customerRepository.findById(5));
+		log.info("Employee id 10012L -> {}", customerRepository.findById(6));
 
-		log.info("Delete Employee id 10011 -> {}", customerRepository.findById(10011L));
-		customerRepository.deleteById(10011L);
+		log.info("Delete Employee id 10011 -> {}", customerRepository.findById(5));
+		customerRepository.deleteById(5);
 
 		log.info("All customers -> {}", customerRepository.findAll());
 

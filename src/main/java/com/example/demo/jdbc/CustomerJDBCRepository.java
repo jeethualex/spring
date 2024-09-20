@@ -46,9 +46,9 @@ public class CustomerJDBCRepository {
     }
 
     public int insert(Customer employee) {
-        return jdbcTemplate.update("insert into customers (id, first_name, last_name) " + "values(?, ?, ?)",
+        return jdbcTemplate.update("insert into customers (first_name, last_name) " + "values(?, ?)",
                 new Object[] {
-                        employee.getId(), employee.getFirstName(), employee.getLastName()
+                        employee.getFirstName(), employee.getLastName()
                 });
     }
 
