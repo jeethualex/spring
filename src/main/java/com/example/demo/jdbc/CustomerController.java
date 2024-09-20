@@ -20,6 +20,8 @@ public class CustomerController {
 	@GetMapping("/customer")
 	public String customer(@RequestParam(value = "name", defaultValue = "World") String name) {
 
+		customerUtils.dbCreateOperations();
+		customerUtils.dbCheckOperations();
 		customerUtils.dbCheckRestOperations();
 
 		return String.format("Hello customer %s!", name);
