@@ -30,9 +30,8 @@ public class DemoApplication implements CommandLineRunner {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public void run(String... strings) throws Exception {
+	public void run(String... strings) {
 		log.info("Creating tables");
-		jdbcTemplate.execute("USE spring");
 		jdbcTemplate.execute("DROP TABLE IF EXISTS customers");
 		jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS customers(" +
 				"id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
