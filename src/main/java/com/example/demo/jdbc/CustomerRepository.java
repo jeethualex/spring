@@ -75,4 +75,23 @@ public class CustomerRepository {
         // Uses JdbcTemplate's batchUpdate operation to bulk load data
         jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
     }
+
+    public void checkOperations() {
+        log.info("Inserting -> {}", insert(new Customer("Ramesh", "Fadatare")));
+        log.info("Inserting -> {}", insert(new Customer("Suresh", "Fadatare")));
+
+        log.info("Employee id 5 -> {}", findById(5));
+        log.info("Employee id 6 -> {}", findById(6));
+
+        log.info("Update 10011L -> {}", update(new Customer(5, "Ram", "Stark")));
+        log.info("Update 10012L -> {}", update(new Customer(6, "Shyam", "Stark")));
+
+        log.info("Employee id 5 -> {}", findById(5));
+        log.info("Employee id 6 -> {}", findById(6));
+
+        log.info("Delete Employee id 5 -> {}", findById(5));
+        deleteById(5);
+
+        log.info("All customers -> {}", findAll());
+    }
 }
