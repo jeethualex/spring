@@ -17,6 +17,10 @@ public class CustomerUtils {
 		customerRepository.createData();
 	}
 
+	public void dbCheckRestOperations() {
+		customerRepository.checkRestOperations();
+	}
+
 	public void dbCheckOperations() {
 		customerRepository.checkOperations();
 	}
