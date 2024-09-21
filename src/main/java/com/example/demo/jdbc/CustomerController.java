@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
 	@Autowired
-	private CustomerUtils customerUtils;
+	private CustomerService customerService;
 
 
 	@GetMapping("/customer")
 	public String customer(@RequestParam(value = "name", defaultValue = "World") String name) {
 
-		customerUtils.dbCreateOperations();
-		customerUtils.dbCheckOperations();
-		customerUtils.dbCheckRestOperations();
+		customerService.dbCreateOperations();
+		customerService.dbCheckOperations();
+		customerService.dbCheckRestOperations();
 
 		return String.format("Hello customer %s!", name);
 	}
