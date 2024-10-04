@@ -1,4 +1,4 @@
-package com.example.demo.jdbc;
+package com.example.demo.jdbc.customer;
 
 public class CustomerNotFoundException extends Exception {
 

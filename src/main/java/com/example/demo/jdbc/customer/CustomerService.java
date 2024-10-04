@@ -1,4 +1,4 @@
-package com.example.demo.jdbc;
+package com.example.demo.jdbc.customer;
 
 import java.util.List;
 

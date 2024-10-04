@@ -1,4 +1,4 @@
-package com.example.demo.jdbc;
+package com.example.demo.jdbc.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
