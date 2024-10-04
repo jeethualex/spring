@@ -1,9 +1,5 @@
 package com.example.demo.jdbc;
 
-import com.example.demo.employee.Employee;
-import com.example.demo.employee.EmployeeDto;
-import com.example.demo.employee.EmployeeMapper;
-import com.example.demo.employee.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

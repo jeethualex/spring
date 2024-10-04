@@ -1,8 +1,5 @@
 package com.example.demo.jdbc;
 
-import com.example.demo.employee.EmployeeDto;
-import com.example.demo.employee.EmployeeNotFoundException;
-
 import java.util.List;
 
 public interface CustomerService {
