@@ -26,20 +26,21 @@ public class FileScanner {
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isFile()) {
 
-                    Date date = new Date(listOfFiles[i].lastModified());
+                    //Date date = new Date(listOfFiles[i].lastModified());
 
-                    long fileSizeInBytes = listOfFiles[i].length();
+                    //long fileSizeInBytes = listOfFiles[i].length();
                     // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
                     //long fileSizeInKB = fileSizeInBytes / 1024;
                     // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
                     //long fileSizeInMB = fileSizeInKB / 1024;
 
-                    String outString = "\""+listOfFiles[i].getPath()+"\"" + "," + "\""+fileSizeInBytes+"\"" + "," + "\""+date+"\"" + "\n";
+                    //String outString = "\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n";
 
                     // System.out.println(listOfFiles[i].getName());
-                    writefile(outString, out);
+                    writefile("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n", out);
+                    System.out.println(listOfFiles[i].getName());
 
-                    System.out.println(outString);
+                    //System.out.println(writefileret("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n", out));
 
                 } else if (listOfFiles[i].isDirectory()) {
                     //System.out.println("Directory " + listOfFiles[i].getName());
@@ -48,6 +49,16 @@ public class FileScanner {
                 }
             }
         }
+    }
+
+    public static String writefileret(String content, String path) throws IOException {
+
+
+        Files.write(
+                Paths.get(path),
+                content.getBytes(),
+                StandardOpenOption.APPEND);
+        return content;
     }
 
 
