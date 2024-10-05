@@ -32,8 +32,8 @@ public class FileScanner {
                     //long fileSizeInMB = fileSizeInKB / 1024;
 
                     // System.out.println(listOfFiles[i].getName());
-                    writefile(listOfFiles[i].getPath(), out);
-                    writefile("," + fileSizeInBytes, out);
+                    writefile("\""+listOfFiles[i].getPath()+"\"", out);
+                    writefile("," + "\""+fileSizeInBytes+"\"", out);
                     writefile("\n", out);
 
                     System.out.println(listOfFiles[i].getName() + ","  + fileSizeInBytes);
