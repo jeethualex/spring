@@ -8,7 +8,7 @@ import java.nio.file.StandardOpenOption;
 
 public class FileScanner {
 
-    public static final String out = "C:\\Users\\j\\Documents\\out.txt";
+    public static final String out = "C:\\Users\\j\\Documents\\out.csv";
     public static final String scanPath = "C:\\";
 
     public static void main(String[] args) throws IOException {
