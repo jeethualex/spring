@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Date;
 
 public class FileScanner {
 
@@ -25,6 +26,8 @@ public class FileScanner {
             for (int i = 0; i < listOfFiles.length; i++) {
                 if (listOfFiles[i].isFile()) {
 
+                    Date date = new Date(listOfFiles[i].lastModified());
+
                     long fileSizeInBytes = listOfFiles[i].length();
                     // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
                     //long fileSizeInKB = fileSizeInBytes / 1024;
@@ -34,9 +37,10 @@ public class FileScanner {
                     // System.out.println(listOfFiles[i].getName());
                     writefile("\""+listOfFiles[i].getPath()+"\"", out);
                     writefile("," + "\""+fileSizeInBytes+"\"", out);
+                    writefile("," + "\""+date+"\"", out);
                     writefile("\n", out);
 
-                    System.out.println(listOfFiles[i].getName() + ","  + fileSizeInBytes);
+                    System.out.println(listOfFiles[i].getName() + ","  + fileSizeInBytes + ","  + date);
 
                 } else if (listOfFiles[i].isDirectory()) {
                     //System.out.println("Directory " + listOfFiles[i].getName());
