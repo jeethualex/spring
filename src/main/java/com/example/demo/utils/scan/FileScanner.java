@@ -34,13 +34,12 @@ public class FileScanner {
                     // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
                     //long fileSizeInMB = fileSizeInKB / 1024;
 
-                    // System.out.println(listOfFiles[i].getName());
-                    writefile("\""+listOfFiles[i].getPath()+"\"", out);
-                    writefile("," + "\""+fileSizeInBytes+"\"", out);
-                    writefile("," + "\""+date+"\"", out);
-                    writefile("\n", out);
+                    String outString = "\""+listOfFiles[i].getPath()+"\"" + "," + "\""+fileSizeInBytes+"\"" + "," + "\""+date+"\"" + "\n";
 
-                    System.out.println(listOfFiles[i].getName() + ","  + fileSizeInBytes + ","  + date);
+                    // System.out.println(listOfFiles[i].getName());
+                    writefile(outString, out);
+
+                    System.out.println(outString);
 
                 } else if (listOfFiles[i].isDirectory()) {
                     //System.out.println("Directory " + listOfFiles[i].getName());
