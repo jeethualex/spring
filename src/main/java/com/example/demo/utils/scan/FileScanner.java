@@ -1,4 +1,4 @@
-package com.example.demo.scan;
+package com.example.demo.utils.scan;
 
 import java.io.File;
 import java.io.IOException;
