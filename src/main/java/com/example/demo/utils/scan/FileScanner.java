@@ -12,9 +12,13 @@ public class FileScanner {
     public static final String out = "C:\\Users\\j\\Documents\\out.csv";
     public static final String scanPath = "C:\\";
 
+    public static StringBuffer sb;
+
     public static void main(String[] args) throws IOException {
+        sb = new StringBuffer();
         clearfile("", out);
         getList(scanPath);
+        writefile(sb.toString(), out);
         //writefile("in", "C:\\Users\\j\\Documents\\out.txt");
     }
 
@@ -37,7 +41,9 @@ public class FileScanner {
                     //String outString = "\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n";
 
                     // System.out.println(listOfFiles[i].getName());
-                    writefile("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n", out);
+                    //writefile("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n", out);
+                    sb.append("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n");
+
                     System.out.println(listOfFiles[i].getName());
 
                     //System.out.println(writefileret("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n", out));
