@@ -18,6 +18,7 @@ public class FileScanner {
     }
 
     public static StringBuffer getListRet(String path, StringBuffer sb) {
+
         File folder = new File(path);
         File[] listOfFiles = folder.listFiles();
         if (listOfFiles != null) {
@@ -46,7 +47,6 @@ public class FileScanner {
     }
 
     public static void clearfile() throws IOException {
-
 
         Files.write(
                 Paths.get(out),
