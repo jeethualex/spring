@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Date;
 
 public class FileScanner {
 
@@ -15,9 +14,10 @@ public class FileScanner {
     public static StringBuffer sb;
 
     public static void main(String[] args) throws IOException {
-        sb = new StringBuffer();
+
         clearfile("", out);
-        getList(scanPath);
+        sb = getListRet(scanPath, new StringBuffer());
+        //getList(scanPath);
         writefile(sb.toString(), out);
         //writefile("in", "C:\\Users\\j\\Documents\\out.txt");
     }
@@ -57,14 +57,25 @@ public class FileScanner {
         }
     }
 
-    public static String writefileret(String content, String path) throws IOException {
+    public static StringBuffer getListRet(String path, StringBuffer sb) throws IOException {
+        //  System.out.println("Hello jeetu!");
+        File folder = new File(path);
+        File[] listOfFiles = folder.listFiles();
+        if (listOfFiles != null) {
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile()) {
 
+                    sb.append("\""+listOfFiles[i].getPath()+"\"" + "," + "\""+listOfFiles[i].length()+"\"" + "," + "\""+listOfFiles[i].lastModified()+"\"" + "\n");
 
-        Files.write(
-                Paths.get(path),
-                content.getBytes(),
-                StandardOpenOption.APPEND);
-        return content;
+                    System.out.println(listOfFiles[i].getName());
+
+                } else if (listOfFiles[i].isDirectory()) {
+
+                    getListRet(listOfFiles[i].getPath(),sb);
+                }
+            }
+        }
+        return sb;
     }
 
 
