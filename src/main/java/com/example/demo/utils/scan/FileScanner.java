@@ -13,8 +13,8 @@ public class FileScanner {
 
     public static void main(String[] args) throws IOException {
 
-        clearfile("", out);
-        writefile(getListRet(scanPath, new StringBuffer()).toString(), out);
+        clearfile();
+        writefile(getListRet(scanPath, new StringBuffer()).toString());
     }
 
     public static StringBuffer getListRet(String path, StringBuffer sb) {
@@ -37,21 +37,20 @@ public class FileScanner {
         return sb;
     }
 
-    public static void writefile(String content, String path) throws IOException {
-
+    public static void writefile(String content) throws IOException {
 
         Files.write(
-                Paths.get(path),
+                Paths.get(out),
                 content.getBytes(),
                 StandardOpenOption.APPEND);
     }
 
-    public static void clearfile(String content, String path) throws IOException {
+    public static void clearfile() throws IOException {
 
 
         Files.write(
-                Paths.get(path),
-                content.getBytes(),
+                Paths.get(out),
+                "".getBytes(),
                 StandardOpenOption.TRUNCATE_EXISTING);
     }
 }
