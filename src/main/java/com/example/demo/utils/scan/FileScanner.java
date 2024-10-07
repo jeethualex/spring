@@ -20,7 +20,7 @@ public class FileScanner {
                 if (i.isFile()) {
                     sb.append("\"" + i.getPath() + "\"" + "," + "\"" + i.length() + "\"" + "," + "\"" + i.lastModified() + "\"" + "\n");
                     System.out.println(i.getName());
-                } else getList(new File(i.getPath()).listFiles(), sb);
+                } else if (i.isDirectory()) getList(new File(i.getPath()).listFiles(), sb);
         return sb;
     }
 }
