@@ -10,23 +10,19 @@ public class FileScanner {
     public static void main(String[] args) throws IOException {
         Files.write(
                 Paths.get("C:\\Users\\j\\Documents\\out.csv"),
-                getListRet("C:\\", new StringBuffer()).toString().getBytes(),
+                getList(new File("C:\\").listFiles(), new StringBuffer()).toString().getBytes(),
                 StandardOpenOption.TRUNCATE_EXISTING);
-
     }
 
-    public static StringBuffer getListRet(String path, StringBuffer sb) {
-        File[] listOfFiles = new File(path).listFiles();
-        if (listOfFiles != null) {
-            for (int i = 0; i < listOfFiles.length; i++) {
-                if (listOfFiles[i].isFile()) {
-                    sb.append("\"" + listOfFiles[i].getPath() + "\"" + "," + "\"" + listOfFiles[i].length() + "\"" + "," + "\"" + listOfFiles[i].lastModified() + "\"" + "\n");
-                    System.out.println(listOfFiles[i].getName());
-                } else if (listOfFiles[i].isDirectory()) {
-                    getListRet(listOfFiles[i].getPath(), sb);
+    public static StringBuffer getList(File[] listOfFiles, StringBuffer sb) {
+        if (listOfFiles != null)
+            for (File i : listOfFiles)
+                if (i.isDirectory()) getList(new File(i.getPath()).listFiles(), sb);
+                else if (i.isFile()) {
+                    sb.append("\"" + i.getPath() + "\"" + "," + "\"" + i.length() + "\"" + "," + "\"" + i.lastModified() + "\"" + "\n");
+                    System.out.println(i.getName());
                 }
-            }
-        }
         return sb;
     }
 }
+
