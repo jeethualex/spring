@@ -17,11 +17,10 @@ public class FileScanner {
     public static StringBuffer getList(File[] listOfFiles, StringBuffer sb) {
         if (listOfFiles != null)
             for (File i : listOfFiles)
-                if (i.isDirectory()) getList(new File(i.getPath()).listFiles(), sb);
-                else if (i.isFile()) {
+                if (i.isFile()) {
                     sb.append("\"" + i.getPath() + "\"" + "," + "\"" + i.length() + "\"" + "," + "\"" + i.lastModified() + "\"" + "\n");
                     System.out.println(i.getName());
-                }
+                } else getList(new File(i.getPath()).listFiles(), sb);
         return sb;
     }
 }
