@@ -9,12 +9,12 @@ public class SeleniumTests {
     private WebDriver driver;
 
     @Test
-    public void test1()
-    {
+    public void test1() throws InterruptedException {
 
         WebDriver driver = new EdgeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.google.com");
+        driver.get("http://localhost:8080/swagger-ui/index.html");
+        Thread.sleep(10000);
         driver.quit();
     }
 }
