@@ -14,7 +14,7 @@ public class SeleniumTests {
 
         try {
             driver.manage().window().maximize();
-            driver.get("http://localhost:8080/swagger-ui/index.html");
+            driver.get("http://"+System.getenv("MYSQL_HOST")+"/pi-zero-z/Template-CV.php");
             Thread.sleep(10000);
             driver.quit();
         } catch(Exception e) {
