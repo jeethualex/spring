@@ -8,8 +8,6 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 public class SeleniumTests {
 
-    private WebDriver driver;
-
     @Test
     public void test1() {
         WebDriver driver = new EdgeDriver();
