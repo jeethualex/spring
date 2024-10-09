@@ -1,6 +1,6 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Documentation
+For further reference, please consider the following links :
 
 * [Docs](https://blog.jeetualex.info/2024/09/spring-boot-example.html)
