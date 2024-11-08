@@ -1,11 +1,11 @@
-# Spring
+#Spring
 
-## Environment variables needed
+##Environment variables needed
 
 MYSQL_HOST
 MYSQL_USER
 MYSQL_PASS
 
-## Linux run the below
+##Linux run the below
 
 ./build.sh
