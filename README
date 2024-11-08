@@ -1,1 +1,11 @@
-spring
+# Spring
+
+## Environment variables needed
+
+MYSQL_HOST
+MYSQL_USER
+MYSQL_PASS
+
+## Linux run the below
+
+./build.sh
